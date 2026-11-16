@@ -36,6 +36,15 @@ class HistoriqueController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $historique = Historique::findOrFail($id);
+        return view('historiques.show', compact('historique'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)

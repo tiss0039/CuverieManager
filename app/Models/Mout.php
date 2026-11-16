@@ -9,7 +9,7 @@ class Mout extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['volume', 'type', 'cuve_id', 'proprietaire_id'];
+    protected $fillable = ['volume', 'type', 'cuve_id', 'proprietaire_id', 'parcelle_id'];
 
     
     //Relation : Chaque moût appartient à une cuve.
@@ -25,5 +25,12 @@ class Mout extends Model
     public function proprietaire()
     {
         return $this->belongsTo(Proprietaire::class);
+    }
+
+    //Relation : Un moût peut provenir d'une parcelle (facultatif).
+
+    public function parcelle()
+    {
+        return $this->belongsTo(Parcelle::class);
     }
 }

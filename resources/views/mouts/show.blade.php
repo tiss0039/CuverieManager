@@ -18,6 +18,7 @@
                 <p class="card-text"><strong>Volume :</strong> {{ $mout->volume }}</p>
                 <p class="card-text"><strong>Origine :</strong> {{ $mout->origine }}</p>
                 <p class="card-text"><strong>Type :</strong> {{ $mout->type }}</p>
+                <p class="card-text"><strong>Parcelle :</strong> {{ $mout->parcelle->nom_parcelle ?? 'Aucune' }}</p>
                 <p class="card-text"><strong>Cuve associée :</strong> {{ $mout->cuve->nom ?? 'Non associée' }}</p>
                 <p class="card-text"><strong>Date de Création :</strong> {{ $mout->created_at }}</p>
             </div>

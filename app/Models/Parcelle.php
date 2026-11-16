@@ -18,4 +18,11 @@ class Parcelle extends Model
     {
         return $this->belongsTo(Proprietaire::class);
     }
+
+    //Relation : Une parcelle peut produire plusieurs moûts.
+
+    public function mouts()
+    {
+        return $this->hasMany(Mout::class);
+    }
 }

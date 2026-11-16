@@ -25,7 +25,7 @@ class ParcelleSeeder extends Seeder
         Parcelle::create([
             'nom_parcelle' => 'Parcelle 3',
             'localisation_parcelle' => 'Sud',
-            'proprietaire_id' => 3,
+            'proprietaire_id' => 1, // seuls 2 propriétaires sont créés par ProprietaireSeeder
         ]);
     }
 }

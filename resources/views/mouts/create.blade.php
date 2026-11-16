@@ -48,6 +48,19 @@
             </div>
 
             <div class="mb-3">
+                <label for="parcelle_id" class="form-label">Parcelle (facultatif) :</label>
+                <select id="parcelle_id" name="parcelle_id" class="form-select">
+                    <option value="">Aucune</option>
+                    @foreach ($parcelles as $parcelle)
+                        <option value="{{ $parcelle->id }}" {{ old('parcelle_id') == $parcelle->id ? 'selected' : '' }}>
+                            {{ $parcelle->nom_parcelle }} ({{ $parcelle->proprietaire->nom_proprietaire ?? '—' }})
+                        </option>
+                    @endforeach
+                </select>
+                <div class="form-text">La parcelle doit appartenir au propriétaire sélectionné.</div>
+            </div>
+
+            <div class="mb-3">
                 <label for="cuve_id" class="form-label">Cuve associée :</label>
                 <select id="cuve_id" name="cuve_id" class="form-select">
                     <option value="">Aucune</option>

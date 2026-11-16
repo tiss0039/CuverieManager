@@ -33,16 +33,18 @@ class AuthenticatedSessionController extends Controller
             $user = Auth::user();
     
             // Redirection en fonction du rôle
-            if ($user->role->nom_role === 'Administrateur') {
+            $roleName = $user->role?->nom_role;
+
+            if ($roleName === 'Administrateur') {
                 return redirect()->route('admin.dashboard');
-            } elseif ($user->role->nom_role === 'Manager') {
+            } elseif ($roleName === 'Manager') {
                 return redirect()->route('manager.dashboard');
-            } elseif ($user->role->nom_role === 'Caviste') {
+            } elseif ($roleName === 'Caviste') {
                 return redirect()->route('caviste.dashboard');
             }
-    
-            // Par défaut, redirige vers la page d'accueil
-            return redirect('/');
+
+            // Sans rôle reconnu : le tableau de bord affiche un refus d'accès (403) explicite
+            return redirect()->route('dashboard');
         }
     
         return back()->withErrors([

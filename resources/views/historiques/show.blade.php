@@ -13,9 +13,9 @@
         <div class="card">
             <div class="card-body">
                 <p><strong>ID :</strong> {{ $historique->id }}</p>
-                <p><strong>Action :</strong> {{ $historique->action }}</p>
+                <p><strong>Action :</strong> {{ $historique->type_action }}</p>
                 <p><strong>Employé :</strong> {{ $historique->employe->nom ?? 'Inconnu' }}</p>
-                <p><strong>Date :</strong> {{ $historique->created_at }}</p>
+                <p><strong>Date :</strong> {{ $historique->date_action }}</p>
             </div>
         </div>
         <div class="mt-4">

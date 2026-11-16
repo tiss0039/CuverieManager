@@ -9,7 +9,7 @@ class Employe extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom_employe', 'prenom_employe', 'email_employe', 'role_id'];
+    protected $fillable = ['nom', 'prenom', 'email', 'role_id'];
 
     
     //Relation : Un employé appartient à un rôle.

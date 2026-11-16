@@ -35,6 +35,7 @@
                         <th>Volume</th>
                         <th>Type</th>
                         <th>Propriétaire</th>
+                        <th>Parcelle</th>
                         <th>Cuve associée</th>
                         <th>Actions</th>
                     </tr>
@@ -46,6 +47,7 @@
                             <td>{{ $mout->volume }}</td>
                             <td>{{ $mout->type }}</td>
                             <td>{{ $mout->proprietaire->nom_proprietaire ?? 'Aucun' }}</td>
+                            <td>{{ $mout->parcelle->nom_parcelle ?? 'Aucune' }}</td>
                             <td>{{ $mout->cuve->nom ?? 'Aucune' }}</td>
                             <td>
                                 <!-- Actions disponibles selon le rôle -->

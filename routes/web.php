@@ -21,6 +21,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         $user = auth()->user();
 
+        // Utilisateur sans rôle attribué (ex. inscription publique) : accès refusé
+        if (! $user->role) {
+            abort(403, 'Aucun rôle ne vous a été attribué. Veuillez contacter un administrateur.');
+        }
+
         if ($user->role->nom_role === 'Administrateur') {
             return redirect()->route('admin.dashboard'); // Redirection vers le dashboard admin
         } elseif ($user->role->nom_role === 'Manager') {

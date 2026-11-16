@@ -17,7 +17,10 @@ class UserSeeder extends Seeder
         $cavisteRole = Role::where('nom_role', 'Caviste')->first();
 
         // Supprimer les utilisateurs existants avant de les recréer
-        User::truncate();
+        // (delete() plutôt que truncate() : sous MySQL, TRUNCATE valide
+        // implicitement la transaction en cours, ce qui empêchait les tests
+        // d'annuler les données insérées)
+        User::query()->delete();
 
         // Ajout d'utilisateurs uniques
         User::create([

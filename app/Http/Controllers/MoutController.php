@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mout;
 use App\Models\Cuve;
 use App\Models\Proprietaire;
+use App\Models\Parcelle;
 use App\Http\Requests\MoutRequest;
 
 class MoutController extends Controller
@@ -15,7 +16,7 @@ class MoutController extends Controller
     public function index()
     {
          
-        $mouts = Mout::with(['cuve', 'proprietaire'])->get();
+        $mouts = Mout::with(['cuve', 'proprietaire', 'parcelle'])->get();
 
         
         return view('mouts.index', compact('mouts'));
@@ -28,7 +29,8 @@ class MoutController extends Controller
     {
         $cuves = Cuve::all();
         $proprietaires = Proprietaire::all();
-        return view('mouts.create', compact('cuves', 'proprietaires'));
+        $parcelles = Parcelle::with('proprietaire')->get();
+        return view('mouts.create', compact('cuves', 'proprietaires', 'parcelles'));
     }
 
     /**
@@ -60,8 +62,9 @@ class MoutController extends Controller
         $mout = Mout::findOrFail($id);
         $cuves = Cuve::all();
         $proprietaires = Proprietaire::all();
+        $parcelles = Parcelle::with('proprietaire')->get();
 
-        return view('mouts.edit', compact('mout', 'cuves', 'proprietaires'));
+        return view('mouts.edit', compact('mout', 'cuves', 'proprietaires', 'parcelles'));
     }
 
     /**
